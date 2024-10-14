@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Python script to check if all boxes can be opened.
 Return True if all boxes can be opened else return False.
