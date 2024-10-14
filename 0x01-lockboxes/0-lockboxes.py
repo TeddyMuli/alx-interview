@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Python script to check if all boxes can be opened.
 Return True if all boxes can be opened else return False.
@@ -6,18 +6,19 @@ Return True if all boxes can be opened else return False.
 
 
 def canUnlockAll(boxes):
-    """This function checks if all boxes can be unlocked"""
-    box_num = 0
-    opened_boxes = set()
-    opened_boxes.add(0)
-
-    if ((isinstance(list, boxes)) or (len(boxes) <= 0)):
+    """Function to get the number of opened boxes."""
+    if (not isinstance(boxes, list) or (len(boxes) <= 0)):
         return False
 
-    for box in boxes:
-        for key in boxes[box_num]:
+    opened_boxes = set()
+    opened_boxes.add(0)
+    queue = [0]
+
+    while queue:
+        box_index = queue.pop(0)
+        for key in boxes[box_index]:
             if ((key < len(boxes)) and (key not in opened_boxes)):
                 opened_boxes.add(key)
-                box_num = key
+                queue.append(key)
 
     return len(opened_boxes) == len(boxes)
