@@ -11,10 +11,10 @@ def canUnlockAll(boxes):
     opened_boxes = set()
     opened_boxes.add(0)
 
-    if ((isinstance(boxes, list)) or (len(boxes) <= 0)):
+    if ((isinstance(list, boxes)) or (len(boxes) <= 0)):
         return False
 
-    while boxes:
+    for box in boxes:
         for key in boxes[box_num]:
             if ((key < len(boxes)) and (key not in opened_boxes)):
                 opened_boxes.add(key)
