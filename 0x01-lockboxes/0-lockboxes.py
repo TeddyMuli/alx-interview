@@ -1,21 +1,20 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Python script to check if all boxes can be opened.
 Return True if all boxes can be opened else return False.
 """
 def canUnlockAll(boxes):
   list_length = len(boxes)
-  count = 1
-  box_num = 0
-  opened_boxes = []
+  opened_boxes = [0]
+  keys = set(opened_boxes)
 
   if ((type(boxes) is not list) or (list_length <= 0)):
     return False
+  
+  for box_index in opened_boxes:    
+    for key in boxes[box_index]:
+      if ((key <= list_length) and (key not in opened_boxes)):
+        opened_boxes.append(key)
+        keys.add(key)
 
-  for x in boxes[box_num]:
-    if ((x <= list_length) and (x not in opened_boxes)):
-      opened_boxes.append(x)
-      box_num = x
-      count += 1
-
-  return True if count == list_length else False
+  return len(keys) == list_length
