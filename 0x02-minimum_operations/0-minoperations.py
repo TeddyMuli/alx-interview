@@ -8,22 +8,22 @@ the fewest number of operations needed to result in exactly n H characters in th
 from typing import List
 
 
-def getFactors(n: int) -> List[int]:
+def get_factors(no_of_chars: int) -> List[int]:
     """
     Get the factors of a number and return a list.
     """
     factors = []
-    while n % 2 == 0:
+    while no_of_chars % 2 == 0:
         factors.append(2)
-        n //= 2
-    
-    for i in range(3, int(n**0.5) + 1, 2):
-        while n % i == 0:
-            factors.append(i)
-            n //= i
+        no_of_chars //= 2
 
-    if n > 2:
-        factors.append(n)
+    for i in range(3, int(no_of_chars**0.5) + 1, 2):
+        while no_of_chars % i == 0:
+            factors.append(i)
+            no_of_chars //= i
+
+    if no_of_chars > 2:
+        factors.append(no_of_chars)
 
     return factors
 
@@ -34,7 +34,8 @@ def minOperations(n: int) -> int:
     Copy All and Paste. Given a number n, write a method that calculates
     the fewest number of operations needed to result in exactly n H characters in the file.
     """
-    if (n <= 0): return 0
+    if n <= 0:
+        return 0
 
-    factors = getFactors(n)
+    factors = get_factors(n)
     return sum(factors)
