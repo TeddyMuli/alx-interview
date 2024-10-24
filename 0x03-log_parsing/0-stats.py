@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+Module to read  stdin
+"""
 import sys
 
 
